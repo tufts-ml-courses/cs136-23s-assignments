@@ -81,14 +81,14 @@ class Vocabulary(object):
         for fpath_or_word in corpus_filepath_or_word_list:
             if os.path.exists(fpath_or_word):
                 fpath = fpath_or_word
-                line_list = np.loadtxt(fpath, dtype=str, delimiter=' \t\n', ndmin=1)
-                for line in line_list:
-                    line = line.translate(punc_remover)
-                    for word in line.split():
-                        word = str.strip(word).lower()
-                        if len(word) > 0 and word not in self.vocab_dict:
-                            self.vocab_dict[word] = self.size
-                            self.size += 1
+                with open(fpath, 'r', encoding='utf-8') as f:
+                    for line in f:
+                        line = line.translate(punc_remover)
+                        for word in line.split():
+                            word = str.strip(word).lower()
+                            if len(word) > 0 and word not in self.vocab_dict:
+                                self.vocab_dict[word] = self.size
+                                self.size += 1
             else:
                 word = str.strip(fpath_or_word).translate(punc_remover)
                 if len(word) > 0 and word not in self.vocab_dict:
