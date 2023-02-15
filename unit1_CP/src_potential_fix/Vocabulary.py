@@ -47,7 +47,7 @@ class Vocabulary(object):
     >>> with open("/tmp/a.txt", 'w') as f:
     ...     for i in range(26):
     ...         unused = f.write("%s " % str(chr(97+i)))
-    >>> vocab = Vocabulary(["/tmp/a.txt"])
+    >>> vocab = Vocabulary(fpath_list=["/tmp/a.txt"])
     >>> print(vocab.size)
     26
     >>> print(vocab.get_word_id("a"))
@@ -59,7 +59,7 @@ class Vocabulary(object):
 
     """
 
-    def __init__(self, corpus_filepath_or_word_list):
+    def __init__(self, word_list=[], fpath_list=[]):
         ''' Create vocabulary from a list of words or a list of paths to text files
 
         Args
@@ -78,22 +78,22 @@ class Vocabulary(object):
         punc_remover = str.maketrans('', '', 
             "0123456789" + string.punctuation.replace("'",""))
 
-        for fpath_or_word in corpus_filepath_or_word_list:
-            if os.path.exists(fpath_or_word):
-                fpath = fpath_or_word
-                with open(fpath, 'r', encoding='utf-8') as f:
-                    for line in f:
-                        line = line.translate(punc_remover)
-                        for word in line.split():
-                            word = str.strip(word).lower()
-                            if len(word) > 0 and word not in self.vocab_dict:
-                                self.vocab_dict[word] = self.size
-                                self.size += 1
-            else:
-                word = str.strip(fpath_or_word).translate(punc_remover)
-                if len(word) > 0 and word not in self.vocab_dict:
-                    self.vocab_dict[word] = self.size
-                    self.size += 1
+        # Load from any provided list of txt files
+        for fpath in fpath_list:
+            with open(fpath, 'r', encoding='utf-8') as f:
+                for line in f:
+                    line = line.translate(punc_remover)
+                    for word in line.split():
+                        word = str.strip(word).lower()
+                        if len(word) > 0 and word not in self.vocab_dict:
+                            self.vocab_dict[word] = self.size
+                            self.size += 1
+        # Also load from provided word list
+        for word in word_list:
+            word = str.strip(word).translate(punc_remover)
+            if len(word) > 0 and word not in self.vocab_dict:
+                self.vocab_dict[word] = self.size
+                self.size += 1
 
     def get_word_id(self, word):
         ''' Retrieve the integer id of the provided word in the corpus
