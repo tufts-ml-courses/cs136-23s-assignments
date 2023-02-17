@@ -1,0 +1,156 @@
+\documentclass[10pt]{article}
+
+%%% Doc layout
+\usepackage{fullpage} 
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{microtype}      % microtypography
+\usepackage{parskip}
+\usepackage{times}
+
+%% Hyperlinks always black, no weird boxes
+\usepackage[hyphens]{url}
+\usepackage[colorlinks=true,allcolors=black,pdfborder={0 0 0}]{hyperref}
+
+%%% Math typesetting
+\usepackage{amsmath,amssymb}
+
+%%% Write out problem statements in blue, solutions in black
+\usepackage{xcolor}
+\newcommand{\officialdirections}[1]{{\color{purple} #1}}
+
+%%% Avoid automatic section numbers (we'll provide our own)
+\setcounter{secnumdepth}{0}
+
+%% --------------
+%% Header
+%% --------------
+\usepackage{fancyhdr}
+\fancyhf{}
+\fancyhead[C]{\ifnum\value{page}=1 CS 136 - 2023s - HW2 Submission \else \fi}
+\fancyfoot[C]{\thepage} % page number
+\renewcommand\headrulewidth{0pt}
+\pagestyle{fancy}
+
+
+%% --------------
+%% Begin Document
+%% --------------
+\begin{document}
+
+~~\\ %% add vertical space
+
+{\Large{\bf Student Name: TODO}}
+
+\Large{\bf Collaboration Statement:}
+
+Total hours spent: TODO
+
+I discussed ideas with these individuals:
+\begin{itemize}
+\item TODO
+\item TODO
+\item $\ldots$	
+\end{itemize}
+
+I consulted the following resources:
+\begin{itemize}
+\item TODO
+\item TODO
+\item $\ldots$	
+\end{itemize}
+~~\\
+By submitting this assignment, I affirm this is my own original work that abides by the course collaboration policy.
+~~\\
+~~\\
+Links: 
+\href{https://www.cs.tufts.edu/cs/136/2023s/hw2.html}{[HW2 instructions]} 
+\href{https://www.cs.tufts.edu/cs/136/2023s/index.html#collaboration}{[collab. policy]} 
+
+\tableofcontents
+
+\newpage
+
+\officialdirections{
+\subsection*{1a: Problem Statement}
+Compute the expected value of estimator $\hat{\sigma}^2(x_1, \ldots x_N)$, where
+\begin{align}
+\hat{\sigma}^2(x_1, \ldots x_N) = \frac{1}{N} \sum_{n=1}^N (x_n - \mu_{\text{true}})^2
+\end{align}
+}
+
+\subsection{1a: Solution}
+TODO YOUR SOLUTION HERE
+
+\officialdirections{
+\subsection*{1b: Problem Statement}
+Using your result in 1a, explain if the estimator $\hat{\sigma}^2$ is biased or unbiased. Explain why this differs from the biased-ness of the maximum likelihood estimator for the variance, using a justification that involves the mathematical definition of each estimator. (Hint: Why would one be lower than the other?).
+}
+
+\subsection{1b: Solution}
+TODO YOUR SOLUTION HERE
+
+
+\officialdirections{
+\subsection*{2a: Problem Statement}
+Suppose you are told that a vector random variable $x \in \mathbb{R}^M$ has the following log PDF function:
+
+\begin{align}
+\log p(x) = \text{c} - \frac{1}{2} x^T A x + b^T x
+\end{align}
+
+where $A$ is a symmetric positive definite matrix, $b$ is any vector, and $\text{c}$ is any scalar constant.
+
+Show that $x$ has a multivariate Gaussian distribution.
+}
+
+\subsection{2a: Solution}
+TODO YOUR SOLUTION HERE
+
+
+\officialdirections{
+\subsection*{3a: Problem Statement}
+Show that we can write $S_{N+1}^{-1} = S_N^{-1} + vv^T$ for some vector $v \in \mathbb{R}^M$.
+}
+
+
+\subsection{3a: Solution}
+TODO YOUR SOLUTION HERE
+
+\officialdirections{
+\subsection*{3b: Problem Statement}
+Next, consider the following identity, which holds for any invertible matrix A:
+\begin{align}
+(A + vv^T)^{-1} = A^{-1} - \frac{ (A^{-1}v)(v^T A^{-1})}{ 1 + v^T A^{-1} v}
+\end{align}
+Substitute $A = S_N^{-1}$ and $v$ as defined in 3a into the above. Simplify to write an expression for $S_{N+1}$ in terms of $S_{N}$.
+}
+
+\subsection{3b: Solution}
+TODO YOUR SOLUTION HERE
+
+\officialdirections{
+\subsection*{3c: Problem Statement}
+Show that $\sigma^2_{N+1}(x_*) - \sigma^2_{N}(x_*) = \phi(x_*)^T \left[ S_{N+1} - S_{N} \right] \phi(x_*)$ 
+}
+
+
+\subsection{3c: Solution}
+TODO YOUR SOLUTION HERE
+
+\officialdirections{
+\subsection*{3d: Problem Statement}
+Finally, plug your result from 3b defining $S_{N+1}$ into 3c, plus the fact that $S_N$ must be positive definite, to show that:
+\begin{align}
+\sigma_{N+1}^2(x_*) \leq \sigma_N^2(x_*)
+\end{align}
+This would prove that the predictive variance *cannot increase* with each additional data point. In other words, we will never be "less certain" about a prediction we make if we gather more data.
+}
+
+
+\subsection{3d: Solution}
+TODO YOUR SOLUTION HERE
+
+
+
+
+\end{document}
