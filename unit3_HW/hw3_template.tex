@@ -1,0 +1,173 @@
+\documentclass[10pt]{article}
+
+%%% Doc layout
+\usepackage{fullpage} 
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{microtype}      % microtypography
+\usepackage{parskip}
+\usepackage{times}
+
+%% Hyperlinks always black, no weird boxes
+\usepackage[hyphens]{url}
+\usepackage[colorlinks=true,allcolors=black,pdfborder={0 0 0}]{hyperref}
+
+%%% Math typesetting
+\usepackage{amsmath,amssymb}
+\usepackage{pythonhighlight} 
+%%% Write out problem statements in blue, solutions in black
+\usepackage{xcolor}
+\newcommand{\officialdirections}[1]{{\color{purple} #1}}
+
+%%% Avoid automatic section numbers (we'll provide our own)
+\setcounter{secnumdepth}{0}
+
+%% --------------
+%% Header
+%% --------------
+\usepackage{fancyhdr}
+\fancyhf{}
+\fancyhead[C]{\ifnum\value{page}=1 CS 136 - 2023s - HW3 Submission \else \fi}
+\fancyfoot[C]{\thepage} % page number
+\renewcommand\headrulewidth{0pt}
+\pagestyle{fancy}
+
+
+%% --------------
+%% Begin Document
+%% --------------
+\begin{document}
+
+~~\\ %% add vertical space
+
+{\Large{\bf Student Name: TODO}}
+
+\Large{\bf Collaboration Statement:}
+
+Total hours spent: TODO
+
+I discussed ideas with these individuals:
+\begin{itemize}
+\item TODO
+\item TODO
+\item $\ldots$	
+\end{itemize}
+
+I consulted the following resources:
+\begin{itemize}
+\item TODO
+\item TODO
+\item $\ldots$	
+\end{itemize}
+~~\\
+By submitting this assignment, I affirm this is my own original work that abides by the course collaboration policy.
+~~\\
+~~\\
+Links: 
+\href{https://www.cs.tufts.edu/cs/136/2023s/hw3.html}{[HW3 instructions]} 
+\href{https://www.cs.tufts.edu/cs/136/2023s/index.html#collaboration}{[collab. policy]} 
+
+\tableofcontents
+
+\newpage
+
+\officialdirections{
+\subsection*{1a: Problem Statement}
+Define $\Sigma = L L^T$. Show the following:
+\begin{align}
+| \det (L^{-1}) | = \frac{1}{(\text{det} \Sigma)^{\frac{1}{2}}}
+\end{align}
+}
+
+\subsection{1a: Solution}
+TODO YOUR SOLUTION HERE
+
+
+\officialdirections{
+\subsection*{1b: Problem Statement}
+Show that the pdf of $x$ is given by:
+
+\begin{align}
+p(x) = \frac{1}{(2\pi)^{\frac{D}{2}}}
+\frac{1}{(\text{det} \Sigma)^{\frac{1}{2}}}
+e^{-\frac{1}{2} (x-\mu)^T \Sigma^{1} (x-\mu)}
+\end{align}
+}
+
+\subsection{1b: Solution}
+TODO YOUR SOLUTION HERE
+
+\newpage 
+\officialdirections{
+\subsection*{1c: Problem Statement}
+Complete the Python code below, to show how to turn samples from a standard 1D Gaussian, via NumPy's `randn()` into a sample from a multivariate Gaussian.x}
+
+\subsection{1c: Solution}
+\begin{python}
+import numpy as np
+
+def sample_from_mv_gaussian(mu_D, Sigma_DD, random_state=np.random):
+	''' Draw sample from multivariate Gaussian
+
+	Args
+	----
+	mu_D : 1D array, size D
+		Mean vector
+	Sigma_DD : 2D array, shape (D, D)
+		Covariance matrix. Must be symmetric and positive definite.
+
+	Returns
+	-------
+	x_D : 1D array, size D
+		Sampled value of Gaussian with provided mean and covariance
+	'''
+	D = mu_D.size
+	L_DD = np.linalg.cholesky(Sigma_DD) # compute L from Sigma
+	# GOAL: draw each entry of u_D from standard Gaussian 
+	u_D = np.zeros(D) # TODO FIXME use random_state.randn(...)
+	# GOAL: Want x_D ~ Gaussian(mean = m_D, covar=Sigma_DD)
+	x_D = np.zeros(D) # TODO FIXME transform u_D into x_D 
+	return x_D
+	return x_D
+\end{python}
+
+
+
+\officialdirections{
+\subsection*{2a: Problem Statement}
+Show that the Metropolis-Hastings transition distribution $\mathcal{T}$ satisfies detailed balance with respect to the target distribution $p^*$. 
+
+That is, show that:
+\begin{align}
+p^*( a) \mathcal{T}( b | a)  = p^*(b) \mathcal{T}( a | b)
+\end{align}
+for all possible $a \neq b$, where $a, b$ are any two distinct values of the random variable.
+}
+
+\subsection{2a: Solution}
+TODO YOUR SOLUTION HERE
+
+
+
+\officialdirections{
+\subsection*{3a: Problem Statement}
+(See diagram on 3a Instructions web page)
+
+You start at Medford/Tufts station, and take 1000 steps. What is your probability distribution over ending this journey at each of the 7 stations? Report as a vector (use order of nodes in the diagram, small to large). Round to 3 decimal places.
+}
+
+\subsection{3a: Solution}
+TODO YOUR SOLUTION HERE
+
+[0.000 0.000 0.000 0.000 0.000 0.000 0.000]
+
+\officialdirections{
+\subsection*{3b: Problem Statement}
+Is there a unique stationary distribution for this Markov chain? If so, explain why. If not, explain why not.
+}
+
+
+\subsection{3b: Solution}
+TODO YOUR SOLUTION HERE
+
+
+\end{document}
