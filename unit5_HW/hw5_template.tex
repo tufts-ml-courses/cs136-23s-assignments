@@ -1,0 +1,151 @@
+\documentclass[10pt]{article}
+
+%%% Doc layout
+\usepackage{fullpage} 
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{microtype}      % microtypography
+\usepackage{parskip}
+\usepackage{times}
+
+%% Hyperlinks always black, no weird boxes
+\usepackage[hyphens]{url}
+\usepackage[colorlinks=true,allcolors=black,pdfborder={0 0 0}]{hyperref}
+
+%%% Math typesetting
+\usepackage{amsmath,amssymb}
+\usepackage{pythonhighlight} 
+%%% Write out problem statements in blue, solutions in black
+\usepackage{xcolor}
+\newcommand{\officialdirections}[1]{{\color{purple} #1}}
+
+%%% Avoid automatic section numbers (we'll provide our own)
+\setcounter{secnumdepth}{0}
+
+%% --------------
+%% Header
+%% --------------
+\usepackage{fancyhdr}
+\fancyhf{}
+\fancyhead[C]{\ifnum\value{page}=1 CS 136 - 2023s - HW5 Submission \else \fi}
+\fancyfoot[C]{\thepage} % page number
+\renewcommand\headrulewidth{0pt}
+\pagestyle{fancy}
+
+
+%% --------------
+%% Begin Document
+%% --------------
+\begin{document}
+
+~~\\ %% add vertical space
+
+{\Large{\bf Student Name: TODO}}
+
+\Large{\bf Collaboration Statement:}
+
+Total hours spent: TODO
+
+I discussed ideas with these individuals:
+\begin{itemize}
+\item TODO
+\item TODO
+\item $\ldots$	
+\end{itemize}
+
+I consulted the following resources:
+\begin{itemize}
+\item TODO
+\item TODO
+\item $\ldots$	
+\end{itemize}
+~~\\
+By submitting this assignment, I affirm this is my own original work that abides by the course collaboration policy.
+~~\\
+~~\\
+Links: 
+\href{https://www.cs.tufts.edu/cs/136/2023s/hw5.html}{[HW5 instructions]} 
+\href{https://www.cs.tufts.edu/cs/136/2023s/index.html#collaboration}{[collab. policy]} 
+
+\tableofcontents
+
+\newpage
+
+\officialdirections{
+\subsection*{1a: Problem Statement}
+Prove the following property under a Hidden Markov Model.
+
+	\begin{align}
+	p(z_{t+1} | x_{t}, z_{t}) = p(z_{t+1} | z_{t} )
+	\end{align}
+
+}
+
+\subsection{1a: Solution}
+
+TODO YOUR SOLUTION HERE. KEEP IT CONCISE (STAY ON ONE PAGE).
+
+
+\newpage
+\officialdirections{
+\subsection*{1b: Problem Statement}
+Prove the following property under a Hidden Markov Model.
+
+	\begin{align}
+	p(x_{t+1} | x_{1:t}, z_{1:t}) = p(x_{t+1} | z_t)
+	\end{align}
+}
+
+
+\subsection{1b: Solution}
+TODO YOUR SOLUTION HERE. KEEP IT CONCISE (STAY ON ONE PAGE).
+
+
+\newpage
+\officialdirections{
+\subsection*{2a: Problem Statement}
+Write out an expression for the expected complete log likelihood:
+\begin{align}
+\mathbb{E}_{q(z_{1:T} |s)} \left[ \log p(z_{1:T}, x_{1:T} | \theta) \right]	
+\end{align}
+Use the HMM probabilistic model $p(z_{1:T}, x_{1:T} | \theta)$ and the approximate posterior $q(z_{1:T} | s)$ defined above. 
+
+Your answer should be a function of the data $x$, the local sequence parameters $s$ and $r(s)$, as well as the HMM parameters $\pi, A, \phi$.
+}
+
+
+\subsection{2a: Solution}
+
+TODO YOUR SOLUTION HERE
+
+
+\newpage
+\officialdirections{
+\subsection*{2b: Problem Statement}
+Using your objective function from 2a above, show that for the M-step optimal update to the Bernoulli parameters $\phi_{kd}$, the optimal update is given by:
+\begin{align}
+\phi_{kd} = \frac{ \sum_{t=1}^T r_{tk} x_{td} }{ \sum_{t=1}^T r_{tk} }
+\end{align}
+}
+
+\subsection{2b: Solution}
+TODO YOUR SOLUTION HERE
+
+
+
+\newpage
+\officialdirections{
+\subsection*{2c: Problem Statement}
+You can find out (by looking up in your textbook) that the optimal update for each entry of $A$ is given by:
+\begin{align}
+A_{jk} = \frac{ \sum_{t=1}^{T-1} s_{tjk}}{ \sum_{t=1}^{T-1} \sum_{k=1}^K s_{tjk}}, \quad \text{for}~ j \in \{1, \ldots, K\}, k \in \{1, \ldots, K\}
+\end{align}
+Provide a short plain English summary of the update for $A$. How should we interpret the numerator? The denominator? 
+}
+
+
+\subsection{2c: Solution}
+TODO YOUR SOLUTION HERE
+
+
+
+\end{document}
